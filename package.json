@@ -1,5 +1,5 @@
 {
-  "name": "runio",
+  "name": "runio.js",
   "version": "1.0.0",
   "description": "NPM Scripts on Steriods! Replace your scripts with pure JS",
   "main": "src/index.js",

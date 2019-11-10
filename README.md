@@ -6,7 +6,9 @@ Why not to write your scripts in pure JavaScript!
 ## Usage
 
 Write a module that exports commands per function. 
-Each arg
+
+* Each argument of function will be an argument of a command
+* If you provide `options` argument, with default value of an object, this will declate options.
 
 ```js
 #!/usr/bin/env node
@@ -42,7 +44,7 @@ if (require.main === module) runio(module.exports);
 ## Installation
 
 ```
-npm i runio --save
+npm i runio.js --save
 ```
 
 Create a new `runio.js` scripts file:
