@@ -39,3 +39,17 @@ if (require.main === module) runio(module.exports);
 * Run `./runio deploy` to run a deploy script
 * Run `./runio deploy staging` to run a deploy script to staging
 
+## Installation
+
+```
+npm i runio --save
+```
+
+Create a new `runio.js` scripts file:
+
+```
+npx runio init
+```
+
+Each exported function of this file will be command.
+

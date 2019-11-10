@@ -1,0 +1,33 @@
+{
+  "name": "runio",
+  "version": "1.0.0",
+  "description": "NPM Scripts on Steriods! Replace your scripts with pure JS",
+  "main": "src/index.js",
+  "bin": {
+    "runio": "./bin/runio.js"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],  
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^4.0.0",
+    "fs-extra": "^8.1.0",
+    "parse-function": "^5.4.4",
+    "reflect-args": "^2.0.0",
+    "signale": "^1.4.0",
+    "timer-node": "^1.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "command",
+    "task",
+    "build"
+  ],
+  "author": "Michael Bodnarchuk @davertmik",
+  "license": "ISC"
+}
