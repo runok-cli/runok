@@ -11,10 +11,10 @@ module.exports = (file, configFn) => {
     
     TASK,
     file,
-    replace: [],
+    replaceList: [],
     
     replace(from, to) {
-      this.replace.push({
+      this.replaceList.push({
         from, to
       });
     }
@@ -24,16 +24,23 @@ module.exports = (file, configFn) => {
   configure(config, configFn);
   
   const result = start(config.TASK, config.file);
-
+  
   let data;
   try {
     data = fs.readFileSync(file).toString();
-    for (const r of this.replace) {
-      data = data.replace(r.from, r.to);
+    for (const r of config.replaceList) {
+      data = replaceAll(data, r.from, r.to);
     }
     fs.writeFileSync(file, data);
   } catch (err) {
     return fail({ ...result, error });
   }
   return success({ ...result, data });
+}
+
+function replaceAll(string, from, to) {
+  if (typeof from === 'string') {
+    return string.split(from).join(to);
+  }
+  return string.replace(from, to);
 }

@@ -1,10 +1,9 @@
 #!/usr/bin/env node
-const runio = require('./src/command');
-const { exec, npx, git, writeToFile } = require('./src');
+const { runio, exec, npx, git, replaceInFile, writeToFile } = require('./src');
 
 module.exports = {
   async listActions(one, two = 'this') {
-    console.log('listing actions');
+    console.log('listing actions');    
   },
 
   /**
@@ -22,7 +21,7 @@ module.exports = {
     await npx('mocha');
   },
 
-  async try() {
+  async tryRun() {
     await exec('ls', cmd => cmd.arg('-ll'));
     await npx('parser', cmd => { 
       cmd.arg('.runio.js'); 
@@ -38,7 +37,10 @@ module.exports = {
     await git(cmd => {
       cmd.commit();      
     });
+  },
 
+  async replace() {
+    replaceInFile('file.md', cfg => cfg.replace('word', 'bye'));
   },
   
   async etc() {
