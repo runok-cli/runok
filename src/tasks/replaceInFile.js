@@ -32,7 +32,7 @@ module.exports = (file, configFn) => {
       data = replaceAll(data, r.from, r.to);
     }
     fs.writeFileSync(file, data);
-  } catch (err) {
+  } catch (error) {
     return fail({ ...result, error });
   }
   return success({ ...result, data });
