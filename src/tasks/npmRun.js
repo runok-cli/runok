@@ -5,4 +5,5 @@ module.exports = (command) => {
     this.TASK = 'npmRun';
     this.prefix('npm run');
     configure(this, configFn);
-  });}
+  });
+}

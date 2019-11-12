@@ -7,7 +7,6 @@ const TASK = 'replaceInFile';
 
 module.exports = (file, configFn) => {
   
-  
   const config = {
     
     TASK,

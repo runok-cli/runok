@@ -1,4 +1,6 @@
-# runio - JavaScript replacement for Bash scripts
+# runio
+
+> JavaScript replacement for Bash scripts
 
 Are you Bash-Ninja? No?
 Why not to write your scripts in pure JavaScript!

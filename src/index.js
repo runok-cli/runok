@@ -15,12 +15,23 @@ async function chdir(workDir, callback)  {
 }
 
 module.exports = {
+  tasks: {
+    chdir,
+    exec,
+    npx,
+    npmRun,
+    copy,
+    git,
+    replaceInFile,
+    writeToFile,  
+  },
   chdir,
   exec,
   npx,
   npmRun,
   copy,
   git,
+  replaceInFile,
   writeToFile,
   runio 
 }

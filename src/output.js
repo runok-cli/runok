@@ -24,3 +24,11 @@ module.exports = (task) => {
   }
   return output;
 }
+
+module.exports.say = (message) => {
+
+}
+
+module.exports.yell = (message) => {
+
+}
