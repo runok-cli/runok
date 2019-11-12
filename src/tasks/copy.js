@@ -3,17 +3,17 @@ const { configure } = require('../task');
 const { start, success, fail } = require('../result');
 const { copySync } = require('fs-extra');
 
-module.exports = (from, to, configFn) => {
+module.exports = (source, dest, configFn) => {
 
   const config = {
     TASK,
-    from, to, options: {},
+    source, dest, options: {},
     from(from) {
-      this.from = from;
+      this.source = from;
     },
 
     to(to) {
-      this.to = to;
+      this.dest = to;
     },   
 
     overwrite(overwrite = true) {
@@ -23,10 +23,10 @@ module.exports = (from, to, configFn) => {
 
   configure(config, configFn);
 
-  const result = start(config.TASK, `${config.from} => ${config.to}`);
+  const result = start(config.TASK, `${config.source} => ${config.dest}`);
 
   try {
-    copySync(config.from, config.to, config.options);
+    copySync(config.source, config.dest, config.options);
     return success(result);
   } catch (error) {
     return fail({ ...result, error });
