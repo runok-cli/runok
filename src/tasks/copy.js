@@ -26,7 +26,7 @@ module.exports = (from, to, configFn) => {
   const result = start(config.TASK, `${config.from} => ${config.to}`);
 
   try {
-    copySync(config.from, config.to, Object.keys(config.options).length ? config.options || undefined);
+    copySync(config.from, config.to, config.options);
     return success(result);
   } catch (error) {
     return fail({ ...result, error });

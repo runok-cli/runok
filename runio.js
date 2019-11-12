@@ -65,7 +65,6 @@ module.exports = {
 
     await chdir('tests', () => exec('codeceptjs'));
 
-
     await git().add('-A').commit('init').run();
     await $exec('ls');
     console.log('wow');
