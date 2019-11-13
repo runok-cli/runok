@@ -1,11 +1,30 @@
-# runio
+# runio.js
 
-> JavaScript replacement for Bash scripts
+Tired of npm-bash-script-foo? 😫
 
-Are you Bash-Ninja? No?
-Why not to write your scripts in pure JavaScript!
+Try runio! 🤓
 
-## Usage
+Write your npm scripts in.... 🎉 SURPRISE 🎉... JavaScript!
+
+> runio.js - is JavaScript replacement for Bash scripts
+
+## Why runio.js
+
+Everyone ❤️ npm scripts. However, when you need something more sophisticated, 
+when you need to use conditionals, loops, regexp and parsers for your scripts, you end up writing JavaScript.
+
+**runio.js** gives you a tool to transform your JavaScript scripts into commands. 
+
+Each exported function will be a command which can be executed from CLI.
+You can use full power of JavaScript & bundled tasks like:
+
+* exec
+* git
+* npmRun
+* npx
+* ...and others
+
+## How to use
 
 Write a module that exports commands per function. 
 
@@ -15,7 +34,8 @@ Write a module that exports commands per function.
 ```js
 #!/usr/bin/env node
 const {
-  git, exec, npx, runio
+  tasks: { git, exec, npx },
+  runio
 } = require('runio');
 
 module.exports = {
@@ -28,7 +48,7 @@ module.exports = {
       cmd.pull();
       cmd.push();      
     });
-    await exec(`ansible release ${env}`);
+    await exec(`ansible-playbook deploy.yml -i hosts ${env}`);
   }
 
   async test() {
@@ -57,3 +77,18 @@ npx runio init
 
 Each exported function of this file will be command.
 
+## Usage
+
+When file is created execute runio script to see all available commands: 
+
+```
+./runio.js
+```
+
+## Credits
+
+Created by Michael Bodnarchuk @davertmik.
+
+Inspired by [Robo PHP Task Runner](https://robo.li)
+
+## LICENSE MIT

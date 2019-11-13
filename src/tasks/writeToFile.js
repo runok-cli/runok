@@ -22,7 +22,7 @@ module.exports = (file, configFn) => {
       this.text += `${line}\n`;
     },
 
-    text(text) {
+    append(text) {
       this.text += text;
     },
   }
@@ -32,11 +32,10 @@ module.exports = (file, configFn) => {
   const result = start(config.TASK, config.file);
   
   try {
-    fs.writeFileSync(file, text);
+    fs.writeFileSync(config.file, config.text);
   } catch (error) {
     return fail({ ...result, error });
   }
-
-  return success({ ...result, data });
+  return success({ ...result, data: config.text });
 }
 

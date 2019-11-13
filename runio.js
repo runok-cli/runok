@@ -6,10 +6,8 @@ module.exports = {
     console.log('listing actions');    
   },
 
-  /**
-   * Should deploy an application
-   */
   async deployStaging(opts = { silent: false, user: 'should' }) {
+    // deploy to staging
     console.log('deploying');
   },
   

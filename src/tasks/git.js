@@ -1,5 +1,6 @@
 const exec = require('./exec');
 const TASK = 'git';
+const output = require('../output')(TASK);
 const { configure } = require('../task');
 const { start, success, fail } = require('../result');
 
@@ -15,45 +16,45 @@ module.exports = async (configFn) => {
     commit(message = '') {
       this.commands.push(`commit ${message}`);
     },
+    pull(branch = '') {
+      this.commands.push(`pull ${branch}`);
+    },
     push(branch = '') {
       this.commands.push(`push ${branch}`);
-
     },
     add(params = '') {
       this.commands.push(`add ${params}`);      
     },
-    clone(params) {
-      this.commands.push(`clone ${params}`);      
-      
+    clone(url, path) {
+      this.commands.push(`clone ${url} ${path}`);            
+    },
+    cloneShallow(url, path) {
+      this.commands.push(`clone ${url} ${path} --shallow`);      
     },
     checkout(options) {
-      this.commands.push(`checkout ${params}`);      
-      
-    },
-    cloneShallow(options) {
-      this.commands.push(`clone ${params} --shallow`);      
+      this.commands.push(`checkout ${params}`);            
     },
   }
 
   configure(config, configFn);
 
-  const result = start(config.TASK);
+  const result = start(config.TASK, config.commands.map(c => `git ${c}`).join(' && '));
 
   const results = [];
   try {
-    for (const command of commands) {
-      output.info(command);
-      results.push(await exec(`git ${command}`, (silent) => silent()));
+    for (const command of config.commands) {
+      results.push(await exec(`git ${command}`));
     }
     return success(Object.assign(result, {          
-      stdout: results.map(r => r.data.stdout),
-      stderr: results.map(r => r.data.stderr),
+      stdout: results.map(r => r.stdout),
+      stderr: results.map(r => r.stderr),
     }));
   } catch (error) {
+    console.log(results);
     return fail(Object.assign(result, {
       error,
-      stdout: results.map(r => r.data.stdout),
-      stderr: results.map(r => r.data.stderr),
+      stdout: results.map(r => r.stdout),
+      stderr: results.map(r => r.stderr),
     }));        
   }
 }

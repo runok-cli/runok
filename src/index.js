@@ -1,5 +1,6 @@
 const runio = require('./command');
 const exec = require('./tasks/exec');
+const { stopOnFail } = require('./result');
 const npx = require('./tasks/npx');
 const npmRun = require('./tasks/npmRun');
 const copy = require('./tasks/copy');
@@ -9,9 +10,9 @@ const git = require('./tasks/git');
 
 async function chdir(workDir, callback)  {
   const currentDir = process.cwd();
-  process.cwd(workDir);
+  process.chdir(workDir);
   await callback();
-  process.cwd(currentDir);
+  process.chdir(currentDir);
 }
 
 module.exports = {
@@ -33,5 +34,6 @@ module.exports = {
   git,
   replaceInFile,
   writeToFile,
+  stopOnFail,
   runio 
 }

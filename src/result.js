@@ -24,7 +24,8 @@ function success(result) {
   const { output } = result;
   finish(result);
   const duration = result.duration ? chalk.grey(` in ${result.duration.milliseconds()} ms`) : '';
-  output.success(`Finished ${duration}`);  
+  output.success(`Finished ${duration}`);
+  return result;
 }
 
 function fail(result) {
@@ -34,14 +35,15 @@ function fail(result) {
   const duration = result.duration ? chalk.grey(` in ${result.duration.milliseconds()} ms`) : '';
   if (result.error) {
     output.fatal(`Failed with "${result.error.message}" ${duration}`);
-    return;
+  } else {
+    output.fatal(`Failed ${duration}`);
   }
-  output.fatal(`Failed ${duration}`);
 
   if (shouldStopOnFail) {
-    output.warning('Execution stopped');
+    output.warn('Execution stopped');
     process.exit(1);
   }
+  return result;
 }
 
 function finish(result) {

@@ -1,5 +1,6 @@
 const program = require('commander');
 const parser = require('parse-function')();
+const babelParser = require('@babel/parser');
 
 program.usage('<command> [options]');
 program.version(1);
@@ -37,8 +38,9 @@ module.exports = (commands) => {
         command.option(`--${opt} [${opt}]`);
       });
     }
+    command.description(parseComments(fnBody));
   
-    command.action(commands[fnName]);
+    command.action(commands[fnName].bind(commands));
   });
 
   program.on('command:*', (cmd) => {
@@ -55,4 +57,10 @@ module.exports = (commands) => {
 function prepareCommandName(name) {
   name = name.split(/(?=[A-Z])/).join('-').toLowerCase();
   return name.replace('-', ':');
+}
+
+function parseComments(source) {
+  const ast = babelParser.parse(source);
+  const comments = ast.comments.map(c => c.value);
+  return comments[0] || '';
 }

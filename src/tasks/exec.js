@@ -44,7 +44,7 @@ module.exports = async (command, configFn) => {
       Object.assign(result, { stdout, stderr, error });
       return resolve(fail(result));
     }
-    resolve(success(result));
+    resolve(success({ ...result, stdout, stderr }));
    });
 
    if (config.printOutput) event.stdout.on('data', (data) => console.log(data));
