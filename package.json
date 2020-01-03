@@ -1,6 +1,6 @@
 {
   "name": "runio.js",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "NPM Scripts on Steriods! Replace your scripts with pure JS",
   "main": "src/index.js",
   "bin": {
@@ -13,6 +13,7 @@
   "homepage": "https://github.com/consolidation/runio",
   "dependencies": {
     "@babel/parser": "^7.7.3",
+    "arrify": "^2.0.1",
     "chalk": "^2.4.2",
     "commander": "^4.0.0",
     "fs-extra": "^8.1.0",
