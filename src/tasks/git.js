@@ -31,7 +31,7 @@ module.exports = async (configFn) => {
     cloneShallow(url, path) {
       this.commands.push(`clone ${url} ${path} --depth=1`);      
     },
-    checkout(options) {
+    checkout(params) {
       this.commands.push(`checkout ${params}`);            
     },
   }
