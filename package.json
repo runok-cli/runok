@@ -1,6 +1,6 @@
 {
   "name": "runio.js",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "NPM Scripts on Steriods! Replace your scripts with pure JS",
   "main": "src/index.js",
   "bin": {
