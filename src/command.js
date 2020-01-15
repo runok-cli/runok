@@ -1,8 +1,7 @@
 const program = require('commander');
 const babelParser = require('@babel/parser');
-let parser = require('parse-function');
+let parser = require('parse-function')();
 
-parser = parser.default();
 program.usage('<command> [options]');
 program.version(1);
 

@@ -12,12 +12,12 @@
   ],
   "homepage": "https://github.com/consolidation/runio",
   "dependencies": {
-    "@babel/parser": "^7.7.3",
+    "@babel/parser": "^7.8.3",
     "arrify": "^2.0.1",
     "chalk": "^2.4.2",
-    "commander": "^4.0.0",
+    "commander": "^4.1.0",
     "fs-extra": "^8.1.0",
-    "parse-function": "^5.4.4",
+    "parse-function": "^5.5.1",
     "signale": "^1.4.0",
     "timer-node": "^1.0.4"
   },
