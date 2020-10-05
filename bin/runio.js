@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 const path = require('path');
 const signale = require('signale');
-const fileName = path.join(process.cwd(), 'runio.js');
-const runio = require('../src/command');
+const fileName = path.join(process.cwd(), 'runok.js');
+const runok = require('../src/command');
 const fs = require('fs');
 
-let runioFile;
+let runokFile;
 
 try {
-  runioFile = require(fileName);
+  runokFile = require(fileName);
 } catch (err) {
   if (process.argv.pop() === 'init') {
     if (initFn()) return;
@@ -28,16 +28,16 @@ if (process.versions.node && process.versions.node.split('.') && process.version
 
 
 
-runio(runioFile);
+runok(runokFile);
 
 function initFn() {
-  if (fs.existsSync('runio.js')) {
-    signale.note('runio.js file already exists, nothing to init. Just use it.');
+  if (fs.existsSync('runok.js')) {
+    signale.note('runok.js file already exists, nothing to init. Just use it.');
     return false;
   }
-  fs.writeFileSync('runio.js',
+  fs.writeFileSync('runok.js',
 `#!/usr/bin/env node
-const { runio, exec } = require('runio.js');
+const { runok, exec } = require('runok.js');
 
 module.exports = {
   async helloWorld() {
@@ -45,11 +45,11 @@ module.exports = {
   }
 }
 
-if (require.main === module) runio(module.exports);
+if (require.main === module) runok(module.exports);
 `  
   );
-  fs.chmodSync('runio.js', 0o775);
-  signale.info('runio.js file created. Each exported function will be a command');
-  signale.info('Execute this file via "./runio.js" or "npx runio"');
+  fs.chmodSync('runok.js', 0o775);
+  signale.info('runok.js file created. Each exported function will be a command');
+  signale.info('Execute this file via "./runok.js" or "npx runok"');
   return true;
 }

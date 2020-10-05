@@ -1,19 +1,18 @@
-# runio.js
+# runok
 
-Tired of npm-bash-script-foo? 😫
-
-Try runio! 🤓
+😫 Tired of npm-bash-script-foo?
+🤓 Try runok! 
 
 Write your npm scripts in.... 🎉 SURPRISE 🎉... JavaScript!
 
-> runio.js - is JavaScript replacement for Bash scripts
+> runok - is JavaScript replacement for Bash scripts
 
-## Why runio.js
+## Why runok
 
 Everyone ❤️ npm scripts. However, when you need something more sophisticated, 
 when you need to use conditionals, loops, regexp and parsers for your scripts, you end up writing JavaScript.
 
-**runio.js** gives you a tool to transform your JavaScript scripts into commands. 
+**runok** gives you a tool to transform your JavaScript scripts into commands. 
 
 Each exported function will be a command which can be executed from CLI.
 You can use full power of JavaScript & bundled tasks like:
@@ -35,8 +34,8 @@ Write a module that exports commands per function.
 #!/usr/bin/env node
 const {
   tasks: { git, exec, npx },
-  runio
-} = require('runio');
+  runok
+} = require('runok');
 
 module.exports = {
 
@@ -56,33 +55,33 @@ module.exports = {
   },
 }
 
-if (require.main === module) runio(module.exports);
+if (require.main === module) runok(module.exports);
 ```
 
-* Run `./runio.js` to list all available commands
-* Run `./runio deploy` to run a deploy script
-* Run `./runio deploy staging` to run a deploy script to staging
+* Run `./runok` to list all available commands
+* Run `./runok deploy` to run a deploy script
+* Run `./runok deploy staging` to run a deploy script to staging
 
 ## Installation
 
 ```
-npm i runio.js --save
+npm i runok --save
 ```
 
-Create a new `runio.js` scripts file:
+Create a new `runok` scripts file:
 
 ```
-npx runio init
+npx runok init
 ```
 
 Each exported function of this file will be command.
 
 ## Usage
 
-When file is created execute runio script to see all available commands: 
+When file is created execute runok script to see all available commands: 
 
 ```
-./runio.js
+./runok
 ```
 
 ## Credits

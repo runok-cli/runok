@@ -1,4 +1,4 @@
-const runio = require('./command');
+const runok = require('./command');
 const exec = require('./tasks/exec');
 const { stopOnFail } = require('./result');
 const npx = require('./tasks/npx');
@@ -35,5 +35,5 @@ module.exports = {
   replaceInFile,
   writeToFile,
   stopOnFail,
-  runio 
+  runok 
 }
