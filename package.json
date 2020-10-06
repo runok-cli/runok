@@ -1,35 +1,46 @@
 {
-  "name": "runok",
-  "version": "0.9.0",
-  "description": "NPM Scripts on Steriods! Replace your scripts with pure JS",
-  "main": "src/index.js",
-  "bin": {
-    "runio": "./bin/runio.js"
-  },
-  "files": [
-    "bin",
-    "src"
-  ],
-  "homepage": "https://github.com/consolidation/runio",
-  "dependencies": {
-    "@babel/parser": "^7.8.3",
-    "arrify": "^2.0.1",
-    "chalk": "^2.4.2",
-    "commander": "^4.1.0",
-    "fs-extra": "^8.1.0",
-    "parse-function": "^5.6",
-    "signale": "^1.4.0",
-    "timer-node": "^1.0.4"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "command",
-    "task",
-    "build"
-  ],
-  "author": "Michael Bodnarchuk @davertmik",
-  "license": "ISC"
+    "name": "runok",
+    "version": "0.9.0",
+    "description": "NPM scripts on steroids! Replace your scripts with pure JS",
+    "main": "./dist/index.js",
+    "typings": "./dist/index.d.ts",
+    "bin": {
+        "runio": "./bin/runio.js"
+    },
+    "files": [
+        "bin",
+        "dist"
+    ],
+    "homepage": "https://github.com/consolidation/runio",
+    "dependencies": {
+        "@babel/parser": "^7.8.3",
+        "arrify": "^2.0.1",
+        "chalk": "^2.4.2",
+        "commander": "^4.1.0",
+        "fs-extra": "^8.1.0",
+        "parse-function": "^5.6",
+        "signale": "^1.4.0",
+        "timer-node": "^3.0.0"
+    },
+    "devDependencies": {
+        "@babel/types": "^7.11.5",
+        "@types/node": "^14.11.3",
+        "typedoc": "^0.19.2"
+    },
+    "scripts": {
+        "test": "./runok.js test",
+        "list:actions": "./runok.js list:actions",
+        "deploy:staging": "./runok.js deploy:staging",
+        "deploy:production": "./runok.js deploy:production",
+        "try:run": "./runok.js try:run",
+        "replace": "./runok.js replace",
+        "etc": "./runok.js etc"
+    },
+    "keywords": [
+        "command",
+        "task",
+        "build"
+    ],
+    "author": "Michael Bodnarchuk @davertmik",
+    "license": "ISC"
 }

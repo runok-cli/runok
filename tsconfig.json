@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "noEmit": false,
+    "declaration": true,
+    "noImplicitAny": false,
+    "noImplicitThis": false,
+    "preserveConstEnums": true,
+    "sourceMap": false,    
+    "strictNullChecks": true,
+    "declarationMap": true,
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "resolveJsonModule": true, 
+    "rootDir": "./src",      
+    "types": [
+        "node",
+        "@babel/types"
+    ],
+    "outDir": "dist",
+    "target": "es2019"
+  },
+  "compileOnSave": true,
+  "include": [
+    "src/**/*"
+  ]
+}

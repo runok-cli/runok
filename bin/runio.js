@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 const path = require('path');
-const signale = require('signale');
 const fileName = path.join(process.cwd(), 'runok.js');
-const runok = require('../src/command');
+const runok = require('../dist/command');
+const signale = require('signale');
 const fs = require('fs');
 
 let runokFile;
@@ -13,6 +13,10 @@ try {
   if (process.argv.pop() === 'init') {
     if (initFn()) return;
   }
+  if (process.argv.pop() === 'export') {
+    if (exportFn()) return;
+  }
+
   signale.fatal(err);  
   signale.fatal(`File ${fileName} is not available.\n Create one and export functions for commands`);
   process.exit(1);
@@ -53,3 +57,4 @@ if (require.main === module) runok(module.exports);
   signale.info('Execute this file via "./runok.js" or "npx runok"');
   return true;
 }
+

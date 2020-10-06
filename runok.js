@@ -1,5 +1,8 @@
 #!/usr/bin/env node
-const { runio, exec, npx, git, replaceInFile, writeToFile } = require('./src');
+const { runok, chdir, stopOnFail,
+  tasks: { writeToFile, npx, exec },
+  output: {},
+} = require('./dist');
 
 module.exports = {
   async listActions(one, two = 'this') {
@@ -25,6 +28,7 @@ module.exports = {
       cmd.arg('.runio.js'); 
       cmd.silent(); 
     });
+
 
     await writeToFile('user.json', cmd => {
       cmd.line('----');
@@ -69,4 +73,4 @@ module.exports = {
   }
 }
 
-if (require.main === module) runio(module.exports);
+if (require.main === module) runok(module.exports);
