@@ -19,9 +19,9 @@ export = {
     exec,
     npx,
     npmRun,
-    // copy,
+    copy,
     git,
-    // replaceInFile,
+    replaceInFile,
     writeToFile,  
   },
   output: {

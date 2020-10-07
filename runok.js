@@ -23,7 +23,7 @@ module.exports = {
   },
 
   async docs() {
-    await npx('documentation readme src/tasks/** --section="Tasks API" --markdown-toc=false --shallow', { output: false });
+    await npx('documentation readme src/tasks/** --section="Tasks API" --shallow', { output: false });
     await npx('documentation readme src/utils/** --section="Helpers"   --markdown-toc=false --shallow', { output: false });
   },
 
