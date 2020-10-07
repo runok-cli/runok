@@ -12,8 +12,7 @@ _Writing bash scripts can be much simpler if you won't do that in bash but in Ja
 
 <p align="center">
 <img
-  src="https://user-images.githubusercontent.com/220264/95269370-edc5ed00-0841-11eb-8600-b8fc00949df7.png"
-  width="50%"
+  src="https://user-images.githubusercontent.com/220264/95273180-0a1a5780-084b-11eb-95ae-73e5f4af3ebb.png"
   align="center"
 />
 </p>
