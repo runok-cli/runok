@@ -41,7 +41,7 @@ function initFn() {
   }
   fs.writeFileSync('runok.js',
 `#!/usr/bin/env node
-const { runok, exec } = require('runok.js');
+const { runok, tasks: { exec } } = require('runok');
 
 module.exports = {
   async helloWorld() {

@@ -10,14 +10,16 @@ interface gitConfigType { (cfg: GitConfig):void }
  * ```js
  * await git(cmd => {
  *    cmd.pull();
- *    cmd.commit('-m udpated');
+ *    cmd.commit('-m updated');
  *    cmd.push();
  * })
  * ```
  * 
  * ### Commands API
  * 
+ * * `cmd.init`
  * * `cmd.tag`
+ * * `cmd.branch`
  * * `cmd.commit`
  * * `cmd.pull`
  * * `cmd.push`
@@ -43,19 +45,33 @@ export default async function git(configFn: gitConfigType) : Promise<Result> {
   return result.success();
 }
 
+/**
+ * Git Config Class
+ */
 export class GitConfig extends TaskConfig {
   
   commands : String[] = []
   TASK = 'git';
 
+  /**
+   * @param tag 
+   */
   tag(tag) {
     this.commands.push(`tag ${tag}`);
     return this;
   }
+
+  /**
+   * Commit params
+   * @param message 
+   */
   commit(message = '') {
     this.commands.push(`commit ${message}`);
     return this;
   }
+  /**
+   * @param branch 
+   */
   pull(branch = '') {
     this.commands.push(`pull ${branch}`);
     return this;
@@ -64,18 +80,46 @@ export class GitConfig extends TaskConfig {
     this.commands.push(`push ${branch}`);
     return this;
   }
+  /**
+   * Initialize git repository
+   */
+  init() {
+    this.commands.push(`init`);
+    return this;
+  }
+  /**
+   * 
+   * @param params 
+   */
   add(params = '') {
     this.commands.push(`add ${params}`);      
     return this;
   }
+  /**
+   * 
+   * @param url 
+   * @param path 
+   */
   clone(url, path) {
     this.commands.push(`clone ${url} ${path}`);            
+    return this;
+  }
+  /**
+   * 
+   * @param command 
+   */
+  branch(command) {
+    this.commands.push(`clone ${command}`);            
     return this;
   }
   cloneShallow(url, path) {
     this.commands.push(`clone ${url} ${path} --depth=1`);      
     return this;
   }
+  /**
+   * 
+   * @param params 
+   */
   checkout(params) {
     this.commands.push(`checkout ${params}`);            
     return this;
