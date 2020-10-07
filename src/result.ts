@@ -2,10 +2,6 @@ import chalk from 'chalk';
 import { createOutput } from './output';
 const Timer = require('timer-node');
 
-export function stopOnFail(stop = true) {
-  Result.shouldStopOnFail = stop;
-}
-
 enum TaskStatus {
   SUCCESS, ERROR, PENDING
 }
@@ -23,7 +19,7 @@ export class Result {
   data: object;
 
   constructor(task) {
-    this.output = createOutput(task + ' #' + Result.taskId);
+    this.output = createOutput(`#${Result.taskId} ${task}`);
     this.duration = new Timer(task);
     this.duration.start();
     this.status = TaskStatus.PENDING;

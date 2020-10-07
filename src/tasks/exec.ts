@@ -11,6 +11,25 @@ interface TaskExecOptions extends ExecOptions {
 interface ExecConfigCallback { (cfg: ExecConfig):void }
 
 
+/**
+ * Executes shell command and returns a promise.
+ * 
+ * ```js
+ * await exec('ls -ll');
+ * ```
+ * A second parameter can be used to pass in [ExecOptions](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) from "child_process" module:
+ * 
+ * ```js
+ * await exec('rails s', { env: { RAILS_ENV: 'production' } })
+ * ```
+ * 
+ * To hide output pass in `output: false`:
+ * 
+ * ```js
+ * await exec('docker build', { output: false });
+ * ```
+ * 
+ */
 export default async function exec(command:string, config?: execConfigType) : Promise<Result> {
 
   const cfg = new ExecConfig(command);
@@ -36,7 +55,6 @@ export default async function exec(command:string, config?: execConfigType) : Pr
     if (cfg.hasOutput) event.stdout.on('error', (error) => process.stderr.write(result.output.error(error)));
   });  
 }
-
 
 export class ExecConfig extends TaskConfig {
 

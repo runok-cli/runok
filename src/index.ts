@@ -1,7 +1,7 @@
 import runok from './command';
-import chdir from './chdir';
+import chdir from './utils/chdir';
+import stopOnFail from './utils/stopOnFail';
 import { say, yell } from './output';
-import { stopOnFail } from './result';
 import exec from './tasks/exec';
 import npx from './tasks/npx';
 import npmRun from './tasks/npmRun';
@@ -28,5 +28,5 @@ export = {
     say, yell
   },
   stopOnFail,
-  runok 
+  runok
 }

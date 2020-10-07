@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const { runok, chdir, stopOnFail,
-  tasks: { writeToFile, npx, exec },
+  tasks: { writeToFile, npx, exec, git },
   output: {},
 } = require('./dist');
 
@@ -20,6 +20,23 @@ module.exports = {
 
   async test() {
     await npx('mocha');
+  },
+
+  async docs() {
+    await npx('documentation readme src/tasks/** --section="Tasks API" --markdown-toc=false --shallow', { output: false });
+    await npx('documentation readme src/utils/** --section="Helpers"   --markdown-toc=false --shallow', { output: false });
+  },
+
+  async publish() {
+    // publishes 
+    stopOnFail(true);
+    await this.docs();
+    await exec('tsc'); 
+    await git(cfg => {
+      cfg.pull();
+      cfg.commit('-m publishing');
+      cfg.push();
+    });
   },
 
   async tryRun() {
