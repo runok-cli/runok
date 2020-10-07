@@ -4,7 +4,7 @@ _Hey, you, are you BASH-Fu ninja?_
 
 _Nope? Then welcome here!_
 
-_Writing bash scripts can be much simpler if you won't do that in bash but in JavaScript using the power of NodeJS ecosystem. That's right:_
+_Writing bash scripts can be much simpler if you won't do that in JavaScript with the superpower of NodeJS ecosystem. That's right:_
 
 ## 💡 Write your shell scripts in JavaScript!
 
