@@ -16,7 +16,7 @@
 * * *
 
 Everyone ❤️ npm scripts. However, 
-when you need to use conditionals, loops, regexp and parsers in yout scripts, you end up writing JavaScript.
+when you need to use conditionals, loops, regexp and parsers in your scripts, you end up writing JavaScript.
 
 **runok gives you a tool to transform your JavaScript scripts into CLI commands**. 
 
